@@ -1,27 +1,87 @@
-# FrontendAngular
+# Frontend Angular - Catálogo de Elementos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Este proyecto es una aplicación web del lado del cliente construida con **Node.js**, **Angular 18** y **TypeScript**.
+Su objetivo primordial es consumir de forma reactiva el catálogo de datos expuesto por nuestro Backend For Frontend (BFF) y renderizar la información mediante una arquitectura de componentes desacoplados (**Smart vs. Dumb Components**).
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 1. Requisitos Previos
 
-## Code scaffolding
+Antes de levantar el servidor de desarrollo localmente, asegúrate de contar con las siguientes herramientas instaladas en tu estación de trabajo:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* **Node.js**: Versión LTS recomendada (v18.x, v20.x o superior).
+* **Angular CLI**: Versión global 18.x.x instalada (`npm install -g @angular/cli@18`).
+* **npm**: Gestor de paquetes nativo de Node.js.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 2. Dependencia Crítica (Infraestructura BFF)
 
-## Running unit tests
+> ⚠️ **¡IMPORTANTE!** > Este frontend actúa como un consumidor de servicios y requiere obligatoriamente que la capa de orquestación (BFF) esté activa para poder inicializar el flujo de datos.
+>
+> Antes de ejecutar los comandos de Angular, asegúrate de que tu servidor **BFF NestJS** (o en su defecto, Express) esté levantado y escuchando peticiones en:  
+> `http://localhost:3000`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 3. Instalación y Despliegue Local
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Sigue estos pasos detallados cronológicamente desde la raíz del monorepo para inicializar el entorno y ejecutar la aplicación:
 
-## Further help
+### Paso 1: Posicionarse en el directorio del proyecto
+Accede a la carpeta dedicada al Frontend de Angular:
+```bash
+cd frontend-angular
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Paso 2: Instalación de dependencias
+Instala todas las dependencias del ecosistema de Angular declaradas en el manifiesto del proyecto:
+```bash
+npm install
+```
+
+### Paso 3: Ejecución en Entorno de Desarrollo (Hot-Reload)
+Para arrancar el servidor de desarrollo local con compilación en tiempo real y recarga automática ante cualquier cambio en el código fuente, ejecuta:
+```bash
+ng serve
+```
+Al iniciar correctamente, observarás que la aplicación compila los módulos compilados de forma autónoma (*Standalone*) y queda disponible en tu navegador web en:  
+👉 `http://localhost:4200`
+
+---
+
+## 4. Estructura del Proyecto
+
+La arquitectura del código fuente se rige por la separación estricta de responsabilidades entre infraestructura central (`core`) y módulos funcionales por dominio (`elements`).
+
+A continuación se detalla el árbol visual del directorio `frontend-angular/src/`:
+
+```text
+src/
+└── app/
+    ├── core/                           # Infraestructura global y agnóstica de la aplicación
+    │   ├── models/                     # Contratos de datos puros de TypeScript
+    │   │   └── element.ts
+    │   └── services/                   # Servicios inyectables de infraestructura (Acceso a HTTP)
+    │       └── element-data-access.service.ts
+    ├── elements/                       # Dominio funcional del recurso Elements
+    │   └── components/                 # Componentes aislados del negocio
+    │       ├── element-dashboard/      # Componente Inteligente (Smart): Orquestador de estado y streams
+    │       └── element-table/          # Componente de Presentación (Dumb): Renderizado de UI con OnPush
+    ├── app.component.css               # Estilos del componente raíz
+    ├── app.component.html              # Plantilla raíz (Cascarón del router-outlet)
+    ├── app.component.ts                # Controlador del componente raíz
+    ├── app.config.ts                   # Configuración global de arranque (Proveedores HTTP y Rutas)
+    └── app.routes.ts                   # Matriz de enrutamiento declarativa con carga perezosa
+```
+
+---
+
+## 5. Lineamientos de Arquitectura y Calidad
+
+Para mantener la cohesión y mantenibilidad del software en este monorepo, toda nueva característica debe alinearse con las siguientes reglas:
+
+1. **Estrategia OnPush:** Todos los componentes de presentación (*Dumb Components*) deben configurar explícitamente `ChangeDetectionStrategy.OnPush` para maximizar el rendimiento reduciendo los ciclos innecesarios de revisión del DOM.
+2. **Programación Reactiva Eficiente:** No se permiten suscripciones manuales (`.subscribe()`) dentro de los controladores si los datos van directo a la vista. Se delega el ciclo de vida de la suscripción a la directiva **Async Pipe** (`| async`) en las plantillas HTML para mitigar fugas de memoria de forma nativa.
+3. **Control de Flujo Moderno:** Para iterar colecciones, se utiliza la directiva `@for`, exigiendo siempre una declaración de seguimiento inequívoca (`track`) basada en identificadores únicos de negocio (`element.id`).
+4. **Orden Alfabético Estricto:** Los bloques de importación, las propiedades dentro de modelos/interfaces y las celdas representacionales en las vistas HTML deben mantenerse ordenadas alfabéticamente para facilitar la legibilidad transversal.

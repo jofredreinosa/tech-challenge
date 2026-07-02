@@ -117,3 +117,8 @@ Debes cumplir estrictamente con la siguiente metodología de trabajo:
 5. Escribe todos los comentarios de lógica de negocio y explicaciones técnicas en español.
 
 Por favor, indícame cuál es el PASO inicial (tomando en cuenta que debes pararte en la carpeta `tech-challenge` para ejecutar los comandos sin crear un Git interno), muéstrame las instrucciones correspondientes a ese único paso y detente ahí a la espera de mi confirmación.
+
+### Docs Frontend
+
+Con base en los readme que has generado anteriormente genera un readme para que puedan correr el frontend,
+indicar que debe estar levantado el backend
