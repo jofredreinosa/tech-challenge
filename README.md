@@ -1,4 +1,4 @@
-# Tech Challenge - Monorepo de Catálogo de Elementos
+# Tech Challenge - Catálogo de Elementos
 
 Este repositorio ha sido diseñado con el propósito de centralizar y resolver  el desafío técnico de orquestación y consumo de datos. El ecosistema contiene la evolución de una capa de servicios Backend For Frontend (BFF) implementada originalmente en Express y migrada hacia NestJS, junto con un cliente Frontend  que consume e interactúa con esta información.
 
