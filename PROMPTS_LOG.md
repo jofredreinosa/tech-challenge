@@ -41,3 +41,22 @@ Heurísticas de Naming
 6. Sin alias (No aliases): Se debe evitar la propagación de alias o nombres alternativos para una misma entidad a lo largo del flujo de datos
 7. Contextual (Contextual): El nombre debe ser tan largo como sea necesario según su contexto. En ámbitos amplios (clases o variables globales), los nombres requieren mayor precisión. En ámbitos muy reducidos (como expresiones lambda inline o funciones con un scope de una línea), se permiten nombres más cortos sin perder legibilidad.
 8. Distinción Verbo/Sustantivo (Verb/Noun Distinction): Las funciones y métodos representan acciones, por lo que su nombre debe comenzar imperativamente con un verbo conjugado seguido de un sustantivo (ej. createUser). Las variables, constantes, clases y objetos representan entidades, por lo que deben ser sustantivos o frases sustantivadas (ej. maxFruits, UserProfile).
+
+### Documentación
+
+Genera el archivo README.md definitivo para el BFF.
+Cualquier desarrollador debe ser capaz de leer este archivo, entender el proyecto, levantar el backend
+en su máquina local desde cero y conocer los endpoints disponibles.
+
+Por favor, estructura el README.md incluyendo las siguientes secciones:
+1. Título del Proyecto y Breve Descripción (en español).
+2. Requisitos Previos (versión de Node.js, etc.).
+3. Pasos detallados para la Instalación y Despliegue Local (comandos para instalar dependencias y scripts para ejecutar en modo desarrollo/producción).
+4. Estructura del Proyecto (un árbol visual de las carpetas y archivos clave creados, usando nombres en inglés).
+5. Documentación de la API: Detalla el endpoint implementado (GET /api/v1/elements), especificando su formato de respuesta (un ejemplo del JSON que devuelve con las propiedades de los objetos ordenadas alfabéticamente).
+
+Recuerda los lineamientos del proyecto:
+- Toda la explicación técnica, títulos de secciones y guías de uso deben estar en español.
+- Los nombres de variables, comandos, archivos (como package.json, tsconfig.json) y bloques de código deben reflejar fielmente el desarrollo en inglés que realizamos.
+
+Por favor, entrega el contenido completo del archivo README.md en un bloque de código Markdown listo para copiar.
