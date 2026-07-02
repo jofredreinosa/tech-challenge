@@ -13,7 +13,7 @@ El plan debe estructurarse considerando que el proyecto final deberá cumplir es
 Entrégame el paso a paso detallado, en orden y en español de todo lo necesario para preparar este entorno antes de codificar.
 
 
-### Ejecución del plan para el BFF en Express
+## Ejecución del plan para el BFF en Express
 
 Acepto el plan de ejecución conceptual. Ahora vamos a iniciar con la fase de desarrollo técnico del backend en Node.js y TypeScript.
 
@@ -42,7 +42,7 @@ Heurísticas de Naming
 7. Contextual (Contextual): El nombre debe ser tan largo como sea necesario según su contexto. En ámbitos amplios (clases o variables globales), los nombres requieren mayor precisión. En ámbitos muy reducidos (como expresiones lambda inline o funciones con un scope de una línea), se permiten nombres más cortos sin perder legibilidad.
 8. Distinción Verbo/Sustantivo (Verb/Noun Distinction): Las funciones y métodos representan acciones, por lo que su nombre debe comenzar imperativamente con un verbo conjugado seguido de un sustantivo (ej. createUser). Las variables, constantes, clases y objetos representan entidades, por lo que deben ser sustantivos o frases sustantivadas (ej. maxFruits, UserProfile).
 
-### Documentación
+## Documentación
 
 Genera el archivo README.md definitivo para el BFF.
 Cualquier desarrollador debe ser capaz de leer este archivo, entender el proyecto, levantar el backend
@@ -60,3 +60,20 @@ Recuerda los lineamientos del proyecto:
 - Los nombres de variables, comandos, archivos (como package.json, tsconfig.json) y bloques de código deben reflejar fielmente el desarrollo en inglés que realizamos.
 
 Por favor, entrega el contenido completo del archivo README.md en un bloque de código Markdown listo para copiar.
+
+
+### BFF NestJs
+
+Actúa como un Tech Lead experto en Node.js, TypeScript y específicamente en los frameworks Express y NestJS.
+
+Vamos a iniciar un NUEVO proyecto desde cero. El objetivo es construir un BFF utilizando NestJS, el cual debe replicar la misma lógica de negocio y especificaciones que el BFF que previamente estructuramos en Express (incluyendo el endpoint GET /api/v1/elements con datos simulados).
+
+En esta oportunidad, tienes PROHIBIDO generar código fuente, controladores, servicios, interfaces, módulos o archivos de configuración. Solo quiero que me entregues un PLAN DE EJECUCIÓN detallado y paso a paso (una hoja de ruta conceptual).
+
+Estructura el plan siguiendo estos lineamientos:
+1. Divide el proceso en fases lógicas y secuenciales adaptadas a la filosofía de NestJS (ej. Inicialización y estructura modular, Creación del Core del Dominio, Implementación del Controlador, etc.).
+2. Cada paso debe describir conceptualmente *qué* se va a hacer y *por qué* es necesario, asegurando buenas prácticas, los principios de Clean Code y el aprovechamiento de la inyección de dependencias nativa de NestJS.
+3. Los nombres de carpetas, módulos, archivos conceptuales (.module, .controller, .service) o variables que menciones en la estrategia deben estar estrictamente en inglés.
+4. Las explicaciones técnicas, justificaciones de arquitectura y lógica de negocio deben estar en español.
+
+Por ahora, entrégame el plan completo a nivel conceptual. No pases a la ejecución de ningún paso de código hasta que yo te lo confirme.
