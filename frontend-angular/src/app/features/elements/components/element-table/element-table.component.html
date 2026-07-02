@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<table>
+    <thead>
+    <tr>
+        <th>Description</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Type</th>
+    </tr>
+    </thead>
+    <tbody>
+        @for (element of elements; track element.id) {
+            <tr>
+                <td>{{ element.description }}</td>
+                <td>{{ element.id }}</td>
+                <td>{{ element.name }}</td>
+                <td>{{ element.status }}</td>
+                <td>{{ element.type }}</td>
+            </tr>
+        }
+    </tbody>
+</table>
