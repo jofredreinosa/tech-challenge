@@ -22,7 +22,7 @@ Sigue estos pasos detallados cronológicamente para inicializar el entorno y eje
 ### Paso 1: Clonar o posicionarse en el directorio del proyecto
 Asegúrate de estar situado en la raíz de la carpeta del proyecto:
 ```bash
-git clone https://github.com/jofredreinosa/tech-challenge.git bff-express
+git clone https://github.com/jofredreinosa/tech-challenge.git
 cd bff-express
 ```
 
