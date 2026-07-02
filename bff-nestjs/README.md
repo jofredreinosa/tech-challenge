@@ -1,98 +1,103 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# BFF NestJS - Catálogo de Elementos
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este proyecto es un Backend For Frontend (BFF) de nivel empresarial construido con **Node.js**, **NestJS** y **TypeScript**.
+A diferencia de aproximaciones tradicionales, este servidor aprovecha una arquitectura modular basada en componentes y un sistema robusto de **Inyección de Dependencias** nativo, actuando como una capa de orquestación segura y fuertemente tipada para interactuar óptimamente con aplicaciones cliente como Angular.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 1. Requisitos Previos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Antes de levantar el servidor localmente, asegúrate de contar con las siguientes herramientas instaladas en tu estación de trabajo:
 
-## Project setup
+* **Node.js**: Versión LTS recomendada (v18.x, v20.x o superior).
+* **npm**: Gestor de paquetes nativo de Node.js (incluido automáticamente con Node.js).
+* **Git**: Para la gestión y control de versiones.
 
+---
+
+## 2. Instalación y Despliegue Local
+
+Sigue estos pasos detallados cronológicamente para inicializar el entorno y ejecutar la aplicación desde cero:
+
+### Paso 1: Clonar el repositorio y posicionarse en el directorio
+Clona el repositorio remoto especificando el nombre del directorio local del proyecto (`bff-nestjs`) y accede a él ejecutando:
 ```bash
-$ npm install
+git clone https://github.com/jofredreinosa/tech-challenge.git
+cd bff-nestjs
 ```
 
-## Compile and run the project
-
+### Paso 2: Instalación de dependencias
+Instala todas las dependencias del ecosistema de NestJS y OpenAPI declaradas en el manifiesto del proyecto:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
-
+### Paso 3: Ejecución en Entorno de Desarrollo (Hot-Reload)
+Para iniciar el servidor en modo de desarrollo con compilación en tiempo real y recarga automática ante cualquier cambio en los módulos, ejecuta:
 ```bash
-# unit tests
-$ npm run test
+npm run start:dev
+```
+Al iniciar correctamente, observarás los logs de NestJS en la terminal mapeando las rutas y confirmando el arranque:
+`[NestApplication] Nest application successfully started`
 
-# e2e tests
-$ npm run test:e2e
+## 3. Estructura del Proyecto
 
-# test coverage
-$ npm run test:cov
+La arquitectura está diseñada bajo la **Filosofía Modular de NestJS**, la cual encapsula de manera lógica las responsabilidades de transporte HTTP, lógica de negocio y definición de contratos de datos por cada dominio de negocio.
+
+A continuación se detalla el árbol visual del directorio `bff-nestjs/`:
+
+```text
+bff-nestjs/
+├── dist/                           # Código transpilado a JavaScript nativo (Producción)
+├── node_modules/                   # Dependencias y módulos de terceros instalados
+├── src/                            # Código fuente principal de la aplicación
+│   ├── elements/                   # Módulo funcional del recurso Elements (Dominio autocontenido)
+│   │   ├── models/                 # Clases y Modelos de datos (Contratos decorados para Swagger)
+│   │   │   └── element.ts
+│   │   ├── element-catalog.ts      # Capa de Servicio / Proveedor (Lógica de negocio y mock data)
+│   │   ├── elements.controller.ts  # Capa de Controladores (Gestión de Ciclo Request/Response HTTP)
+│   │   └── elements.module.ts      # Módulo encargado de encapsular y cablear el recurso
+│   ├── app.module.ts               # Módulo raíz de la aplicación (Orquestador global del ecosistema)
+│   └── main.ts                     # Punto de entrada de la aplicación (Inicialización, CORS y Swagger)
+├── package.json                    # Manifiesto del proyecto y scripts de automatización
+├── package-lock.json               # Árbol de dependencias exacto e inmutable
+└── tsconfig.json                   # Configuración estricta del compilador de TypeScript
 ```
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 4. Documentación de la API
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+La API cuenta con documentación interactiva autogenerada e integrada directamente en el código fuente a través del módulo nativo de **OpenAPI / Swagger** de NestJS.
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+* **Ruta de la Documentación Interactiva (Swagger UI):** Puedes acceder visualmente desde tu navegador web a:  
+  `http://localhost:3000/api/v1/documentation`
+
+### Endpoint Implementado
+
+#### `GET /api/v1/elements`
+
+* **Descripción:** Recupera la lista completa del catálogo de elementos simulados a través del proveedor inyectado.
+* **Políticas CORS integradas:** Permitido explícitamente para el origen de desarrollo de Angular (`http://localhost:4200`) utilizando los métodos seguros de lectura (`GET`).
+* **Formato de Respuesta (Payload JSON):** El contrato de la API garantiza mediante decoradores nativos que las propiedades del objeto de retorno se encuentran estructuradas en **estricto orden alfabético** (`description` -> `id` -> `name` -> `status` -> `type`).
+
+##### Ejemplo de Respuesta Exitosa (`200 OK`):
+
+```json
+[
+  {
+    "description": "Defines the primary core component of the system",
+    "id": "element-001",
+    "name": "Alpha Component",
+    "status": "active",
+    "type": "core"
+  },
+  {
+    "description": "Defines the secondary auxiliary extension of the system",
+    "id": "element-002",
+    "name": "Beta Extension",
+    "status": "inactive",
+    "type": "extension"
+  }
+]
 ```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
