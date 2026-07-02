@@ -96,3 +96,24 @@ Por favor, estructura el plan siguiendo estos lineamientos:
 4. Las explicaciones técnicas, justificaciones de arquitectura y lógica de negocio deben estar en español.
 
 Por ahora, entrégame el plan completo a nivel conceptual. No pases a la ejecución de ningún paso de código hasta que yo te lo confirme.
+
+### Ejecución del plan
+Acepto el plan de ejecución conceptual para el Frontend en Angular. Ahora vamos a iniciar con la fase de desarrollo técnico.
+
+Antes de comenzar, es CRÍTICO que entiendas el contexto de nuestro entorno de trabajo:
+- Estamos trabajando en un MONOREPO cuya raíz es una carpeta llamada `tech-challenge`.
+- El Git principal que gobierna todo el proyecto está en la raíz de `tech-challenge`.
+- Dentro de `tech-challenge` ya existen las carpetas `bff-express` y `bff-nestjs`.
+- El nuevo proyecto de Angular debe crearse como una carpeta hermana dentro de `tech-challenge` (por ejemplo, `frontend-angular`).
+- REGLA ESTRICTA DE GIT: No debes permitir que se cree un nuevo repositorio Git dentro de la carpeta de Angular. Asegúrate de configurar los comandos de inicialización (como usar el flag `--skip-git` en Angular CLI) para que no se genere un archivo `.git` interno, ya que todo debe ser gestionado por el Git raíz del monorepo.
+
+El objetivo de esta iteración es iniciar el desarrollo para consumir el endpoint `GET /api/v1/elements` y renderizar la información en una tabla.
+
+Debes cumplir estrictamente con la siguiente metodología de trabajo:
+1. Avanza siempre paso a paso. Entrega únicamente el código, comandos o archivos del PASO 1. No avances al paso 2 ni generes más código hasta que yo te confirme explícitamente que el paso anterior está completado y correcto.
+2. Aplica inglés estricto para todo el código (nombres de componentes, servicios, variables, funciones, interfaces, archivos .ts, .html, .css), aplicando las 8 heurísticas de Clean Code.
+3. Ordena siempre las propiedades de las interfaces, tipos, objetos y clases de forma alfabética.
+4. No añadas comentarios a los atributos de una interfaz, modelo o propiedad de clase si su nombre ya es autoexplicativo (evita la verbosidad).
+5. Escribe todos los comentarios de lógica de negocio y explicaciones técnicas en español.
+
+Por favor, indícame cuál es el PASO inicial (tomando en cuenta que debes pararte en la carpeta `tech-challenge` para ejecutar los comandos sin crear un Git interno), muéstrame las instrucciones correspondientes a ese único paso y detente ahí a la espera de mi confirmación.
