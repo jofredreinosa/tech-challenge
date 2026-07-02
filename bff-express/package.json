@@ -2,11 +2,11 @@
   "name": "bff-express",
   "version": "1.0.0",
   "description": "BFF built with Express and TypeScript",
-  "main": "dist/app.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "start": "node dist/app.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "start": "node dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

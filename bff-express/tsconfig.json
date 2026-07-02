@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "6.0",
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./dist",
@@ -11,8 +12,8 @@
     "target": "es2022"
   },
   "exclude": [
-    "node_modules",
-    "dist"
+    "dist",
+    "node_modules"
   ],
   "include": [
     "src/**/*"
